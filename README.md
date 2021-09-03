@@ -8,8 +8,8 @@
   - [2.2 Các bước tiến hành](#2.2)
      - [2.2.1 Cài đặt Kerberos trên các máy chủ](#2.2.1)
      - [2.2.2 Cấu hình Kerberos trên Máy chủ Master](#2.2.2)
-     - [2.2.3 Tạo princial và kiểm tra kết quả](#2.2.3)
-     - [2.2.4 Tạo princial cho Kerberos Slave](#2.2.4)
+     - [2.2.3 Tạo principal và kiểm tra kết quả](#2.2.3)
+     - [2.2.4 Tạo principal cho Kerberos Slave](#2.2.4)
      - [2.2.5 Sao chép các file cấu hình sang máy chủ Kerberos Slave](#2.2.5)
      - [2.2.6 Cấu hình máy chủ Kerberos Slave](#2.2.6)
      - [2.2.7 Khởi động Kerberos trên Slave và kích hoạt kropd](#2.2.7)
@@ -149,11 +149,11 @@ Sửa 2 file `/etc/krb5.conf` và `/etc/krb5kdc/kdc.conf`
 
 - Khởi tạo REALM
 
-Bước này sẽ tạo một cơ sở dữ liệu để lưu trữ các thông tin princial, mật khẩu được lưu trữ lại một file `stash`. 
+Bước này sẽ tạo một cơ sở dữ liệu để lưu trữ các thông tin principal, mật khẩu được lưu trữ lại một file `stash`. 
 
 > krb5_newrealm
 
-Nhập mât khẩu cho Master key để truy cập vào database lưu trữ các princial.
+Nhập mât khẩu cho Master key để truy cập vào database lưu trữ các principal.
 
 Sau khi khởi tạo thành công, ta tiếp tục thêm rule cho phép user có quyền quản trị. Trong ví dụ này, ta phân cho các user có hậu tố là `admin@SECURE.LAB`.
 
@@ -230,18 +230,18 @@ systemctl enable krb5-kadmin
 
 ```
 
-#### 2.2.3 Tạo princial và kiểm tra kết quả
+#### 2.2.3 Tạo principal và kiểm tra kết quả
 <a name="2.2.3" />
 
 **Chú ý**: Bước thực hiện trên Kerberos Master
 
-##### Tạo mới princial:
+##### Tạo mới principal:
 
 Trên máy chủ có cài sẵn kdc-admin, ta sử dụng lệnh để đăng nhập vào giao diện quản trị:
 
 > kadmin.local
 
-Tạo một princials có tên là `user1/test` và thoát khỏi `kadmin`: 
+Tạo một principals có tên là `user1/test` và thoát khỏi `kadmin`: 
 
 ```
 kadmin:  addprinc user1/test
@@ -277,15 +277,16 @@ Hủy phiên và xóa bỏ ticket bằng lệnh
 
 ```
 $ kdestroy
+$ klist
 klist: No credentials cache found (filename: /tmp/krb5cc_0)
 ```
 
-#### 2.2.4 Tạo princial cho Kerberos Slave
+#### 2.2.4 Tạo principal cho Kerberos Slave
 <a name="2.2.4" />
 
 **Chú ý**: Bước thực hiện trên Kerberos Master
 
-Trong quá trình đồng bộ dữ liệu từ Master-Slave, KDC dùng một princial là `host` để xác thực giữa các KDC với nhau. Để tạo chúng, ta sử dụng lệnh sau:
+Trong quá trình đồng bộ dữ liệu từ Master-Slave, KDC dùng một principal là `host` để xác thực giữa các KDC với nhau. Để tạo chúng, ta sử dụng lệnh sau:
 
 ```
 kadmin.local -q 'addprinc -randkey host/kdc1.secure.lab'
@@ -459,7 +460,7 @@ drwxr-xr-x 44 root root 4.0K Aug 18 21:23 ..
 -rw-------  1 root root    0 Sep  3 13:23 principal.ok
 ```
 
-- Liệt kê các princial
+- Liệt kê các principal
 
 ```
 kadmin.local -q 'listprincs'
