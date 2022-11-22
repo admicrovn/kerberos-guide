@@ -395,7 +395,7 @@ kdb5_util dump /var/lib/krb5kdc/slave_trans
 kprop -f /var/lib/krb5kdc/slave_trans kdc2.hoangdh.lab
 ```
 
-**Mẹo nhỏ:**:
+**Mẹo nhỏ:**
 
 Có thể bật chế độ debug để xem các tiến trình hoạt động:
 
