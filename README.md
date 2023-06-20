@@ -349,8 +349,8 @@ Sau khi sao chép đủ các file ở bước trên, ta tạo một file ACL cho
 Với nội dung sau:
 
 ```
-host/kdc1.secure.lab
-host/kdc2.secure.lab
+host/kdc1.hoangdh.lab
+host/kdc2.hoangdh.lab
 ```
 
 Và lưu lại file.
@@ -395,7 +395,7 @@ kdb5_util dump /var/lib/krb5kdc/slave_trans
 kprop -f /var/lib/krb5kdc/slave_trans kdc2.hoangdh.lab
 ```
 
-**Mẹo nhỏ:**:
+**Mẹo nhỏ:**
 
 Có thể bật chế độ debug để xem các tiến trình hoạt động:
 
