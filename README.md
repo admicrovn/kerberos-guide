@@ -349,8 +349,8 @@ Sau khi sao chép đủ các file ở bước trên, ta tạo một file ACL cho
 Với nội dung sau:
 
 ```
-host/kdc1.secure.lab
-host/kdc2.secure.lab
+host/kdc1.hoangdh.lab
+host/kdc2.hoangdh.lab
 ```
 
 Và lưu lại file.
