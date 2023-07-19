@@ -218,7 +218,7 @@ WantedBy=multi-user.target
 
 Lưu lại và reload systemd
 
-> systemctl reload-daemon
+> systemctl daemon-reload
 
 Khởi động và kích hoạt KDC, KDC-Admin
 
